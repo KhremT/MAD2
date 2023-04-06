@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Assignment2</string>
+    <string name="assignment_2">Assignment 2</string>
+    <string name="enter_username_here">Enter Username Here</string>
+    <string name="enter_age">Enter Age</string>
+    <string-array name="Genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+</resources>

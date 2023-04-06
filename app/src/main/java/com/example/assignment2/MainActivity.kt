@@ -1,0 +1,41 @@
+package com.example.assignment2
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.*
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var etuser: EditText = findViewById(R.id.etuser)
+        var etage: EditText= findViewById(R.id.etage)
+        var spgender: Spinner = findViewById(R.id.spgender)
+        var box: CheckBox = findViewById(R.id.box)
+
+        // Assign list & style to spinner using adapter
+        var adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this@MainActivity,R.array.Genders,android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spgender.setAdapter(adapter)
+
+
+        box.setOnClickListener {
+            if(box.isChecked()) {
+                if(etuser.text.isNotEmpty() && etage.text.isNotEmpty()) {
+                    var intent = Intent(this, Activity2::class.java)
+                    intent.putExtra("Gender", spgender.selectedItem.toString())
+                    intent.putExtra("Username", etuser.text.toString())
+                    intent.putExtra("Age", etage.text.toString())
+                    startActivity(intent)
+                }
+                else
+                {
+                    Toast.makeText(this@MainActivity,"Please fill in the fields",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+    }
+}
