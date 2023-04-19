@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/gradient"
     >
 
     <TextView
@@ -25,6 +26,8 @@
         android:layout_below="@id/title"
         android:layout_marginTop="50dp"
         android:inputType="text"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         />
     <EditText
         android:layout_width="wrap_content"
@@ -34,6 +37,9 @@
         android:layout_below="@id/etuser"
         android:layout_marginTop="10dp"
         android:inputType="number"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+
         />
     <Spinner
         android:layout_width="wrap_content"
@@ -44,7 +50,9 @@
         android:layout_toRightOf="@id/etage"
         android:layout_alignBottom="@id/etage"
         android:layout_marginLeft="15dp"
-    />
+        android:backgroundTint="@color/black"
+        android:tooltipText=""
+        />
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,6 +61,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="160dp"
         android:text="Reveal"
+        android:textColor="@color/black"
         />
 
 </RelativeLayout>

@@ -3,7 +3,10 @@ package com.example.assignment2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
+import com.example.assignment2.UserClass
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,18 +19,21 @@ class MainActivity : AppCompatActivity() {
         var box: CheckBox = findViewById(R.id.box)
 
         // Assign list & style to spinner using adapter
-        var adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this@MainActivity,R.array.Genders,android.R.layout.simple_spinner_item)
+        var adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this@MainActivity,R.array.Genders,R.layout.myspinner)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spgender.setAdapter(adapter)
+
 
 
         box.setOnClickListener {
             if(box.isChecked()) {
                 if(etuser.text.isNotEmpty() && etage.text.isNotEmpty()) {
+
+                    var User = UserClass(etuser.text.toString(),etage.text.toString(),spgender.selectedItem.toString())
+                    var gson = Gson()
+                    var userJsonString = gson.toJson(User)
                     var intent = Intent(this, Activity2::class.java)
-                    intent.putExtra("Gender", spgender.selectedItem.toString())
-                    intent.putExtra("Username", etuser.text.toString())
-                    intent.putExtra("Age", etage.text.toString())
+                    intent.putExtra("Object", userJsonString)
                     startActivity(intent)
                 }
                 else
