@@ -20,9 +20,8 @@ class Activity2 : AppCompatActivity() {
         var mainlayout : RelativeLayout = findViewById(R.id.act2)
         var text :TextView=findViewById(R.id.act2text2)
 
-        var userJsonString = intent.getStringExtra("Object")
-        var gson = Gson()
-        var recieved = gson.fromJson(userJsonString,UserClass::class.java)
+
+        var recieved = intent.getSerializableExtra("Object",UserClass::class.java) as UserClass
 
         text.text=recieved.getName()
 

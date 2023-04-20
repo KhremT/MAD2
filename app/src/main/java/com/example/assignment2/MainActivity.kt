@@ -24,16 +24,14 @@ class MainActivity : AppCompatActivity() {
         spgender.setAdapter(adapter)
 
 
-
         box.setOnClickListener {
             if(box.isChecked()) {
                 if(etuser.text.isNotEmpty() && etage.text.isNotEmpty()) {
 
+
                     var User = UserClass(etuser.text.toString(),etage.text.toString(),spgender.selectedItem.toString())
-                    var gson = Gson()
-                    var userJsonString = gson.toJson(User)
                     var intent = Intent(this, Activity2::class.java)
-                    intent.putExtra("Object", userJsonString)
+                    intent.putExtra("Object", User)
                     startActivity(intent)
                 }
                 else
